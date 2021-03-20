@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 
 let app = express();
 let filmRouter = require('./routes/film');
+let cinemaRouter = require('./routes/cinema')
+let userRouter = require('./routes/user')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -18,10 +20,12 @@ app.get('/', (req, res, next) => {
 });
 
 app.use('/film', filmRouter);
+app.use('/cinema', cinemaRouter);
+app.use('/user', userRouter);
 
 app.use("*", (req, res, next) => {
     res.status(404).json({
-        status: " Success ok",
+        status: " Denied",
         error: {
             code: 404,
             message: " API fail! Not Found!"

@@ -2,12 +2,10 @@
 
 const queryBuilder = require("../config/database");
 
-// const queryBuilder = require("../config/query");
-
-class FilmService {
+class CinemaService {
     static async getList(req) {
         try {
-            let data = await queryBuilder('movie_type').orderBy('MovieId', 'DESC').select();
+            let data = await queryBuilder('cinema').orderBy('CinemaId', 'DESC').select();
             return data;
         } catch (e) {
             console.log(e);
@@ -16,4 +14,4 @@ class FilmService {
     }
 }
 
-module.exports = FilmService;
+module.exports = CinemaService;

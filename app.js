@@ -6,8 +6,8 @@ let filmRouter = require('./routes/film');
 let cinemaRouter = require('./routes/cinema')
 let userRouter = require('./routes/user')
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get('/', (req, res, next) => {
     res.status(200).json({
@@ -35,3 +35,5 @@ app.use("*", (req, res, next) => {
 })
 
 module.exports = app;
+
+

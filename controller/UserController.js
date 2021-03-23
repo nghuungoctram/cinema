@@ -7,7 +7,7 @@ class UserController {
         try {
             let data = await UserService.CreateService(req);
             res.status(200).json({
-                status: "Ok",
+                status: "Ok from create usercontroller",
                 error: null,
                 data: {
                     result: data
@@ -15,7 +15,7 @@ class UserController {
             });
         } catch (e) {
             res.status(200).json({
-                status: " Fail ",
+                status: " Fail from create usercontroller",
                 error: {
                     code: 1000,
                     message: " Server Error"
@@ -29,7 +29,7 @@ class UserController {
         try {
             let data = await UserService.LoginService(req);
             res.status(200).json({
-                status: "Ok",
+                status: "Ok from login usercontroller",
                 error: null,
                 data: {
                     result: data
@@ -37,7 +37,7 @@ class UserController {
             });
         } catch (e) {
             res.status(200).json({
-                status: " Fail ",
+                status: " Fail from login usercontroller ",
                 error: {
                     code: 1000,
                     message: " Server Error"

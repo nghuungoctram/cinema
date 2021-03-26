@@ -72,7 +72,7 @@ var connect = mysql.createConnection({
 //delete all data in table name
 // connect.connect(function (err) {
 //     if (err) throw err;
-//     let sql = " DELETE FROM type";
+//     let sql = " DELETE FROM user";
 //     connect.query(sql, (error, result) => {
 //         if (error) throw error;
 //         console.log(" Delete successful")

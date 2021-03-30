@@ -1,0 +1,421 @@
+.HomePageTop{
+    padding-top: 10px;
+    width: 100%;
+}
+.HomePageTop-title{
+   width: 100%;
+   text-align: center;
+   padding-top: 120px;
+   padding-bottom: 120px;
+}
+.HomePageTop-title p{
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+.HomePageTop-title h1{
+    font-size: 60px;
+}
+.Container-HomePageTop-item{
+    margin: 0 auto;
+    width: 86%;
+   
+    /* border: 1px solid black; */
+    /* background-color: black; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.Container-HomePageTop-item-relative{
+    position: relative;
+    width: 360px;
+    /* border: 1px solid black; */
+    height: 469px;
+    margin-bottom: 80px;
+}
+.item{
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 469px;
+    cursor: pointer;    
+}
+
+.item img{
+    /* box-shadow: 10px 10px 10px 10px  rgba(168, 166, 166, 0.4);       */
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, .5);
+    z-index: -2;
+    /* background-size: contain; */
+    width: 100%;
+    height: 463px;
+    /* height: 400px; */
+    position: absolute;
+}
+.item span{
+    z-index: 2;
+    position: absolute;
+    font-weight: 700;
+    font-size: 25px;
+    bottom: -5px;
+    left: 27px;
+    color:black;
+}
+.wapper-span:hover{
+    width: 88%;
+   left: 40px;
+}
+.absolute{
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 469px;
+    box-shadow: 
+    inset 0 -8em 1em  rgba(255,255,255, 0.5),
+    0.3em 0em 4em rgba(255,255,255, 0.4);
+
+
+    background-size: 100% 200%; 
+    /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%,  rgba(255, 255, 255, 0.4) 50%); */
+    background-image: linear-gradient(to bottom,  rgba(0, 0, 0, 0) 50%, rgba(0,0,0,0.6) 50%);
+    transition: 
+      background-position .2s ease-in-out, 
+      color .2s ease-in-out,
+}
+.absolute:hover{
+    background-position: 0 100%;
+    
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 1160px){
+    
+    
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 300px;
+        height: 350px;
+        margin-bottom: 80px;
+        /* border: 1px solid black; */
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 300px;
+        height: 350px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 300px;
+        height: 350px;
+    }
+    .absolute{
+        width: 300px;
+        height: 350px;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 1090px){
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 280px;
+        height: 350px;
+        margin-bottom: 80px;
+        /* border: 1px solid black; */
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 280px;
+        height: 350px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 280px;
+        height: 350px;
+    }
+    .absolute{
+        width: 280px;
+        height: 350px;
+    }
+}
+
+
+@media only screen and (max-width: 1013px){
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 400px;
+        height: 470px;
+        margin-bottom: 80px;
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 400px;
+        height: 470px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 400px;
+        height: 470px;
+    }
+    .absolute{
+        width: 400px;
+        height: 470px;
+    }
+}
+
+
+@media only screen and (max-width: 960px){
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 380px;
+        height: 470px;
+        margin-bottom: 80px;
+        /* border: 1px solid black; */
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 380px;
+        height: 470px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 380px;
+        height: 470px;
+    }
+    .absolute{
+        width: 380px;
+        height: 470px;
+    }
+}
+
+@media only screen and (max-width: 910px){
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 350px;
+        height: 450px;
+        margin-bottom: 80px;
+        /* border: 1px solid black; */
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 350px;
+        height: 450px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 350px;
+        height: 450px;
+    }
+    .absolute{
+        width: 350px;
+        height: 450px;
+    }
+}
+
+@media only screen and (max-width: 835px){
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 310px;
+        height: 410px;
+        margin-bottom: 80px;
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 310px;
+        height: 410px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 310px;
+        height: 410px;
+    }
+    .absolute{
+        width: 310px;
+        height: 410px;
+    }
+}
+
+
+
+@media only screen and (max-width: 743px){
+
+    .Container-HomePageTop-item{
+        margin: 0 auto;
+        width: 86%;
+       
+        /* border: 1px solid black; */
+        /* background-color: black; */
+        display: flex;
+        flex-flow: row wrap ;
+        justify-content: center;
+        align-items: center;
+    }
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 500px;
+        height: 600px;
+        margin-bottom: 80px;
+        border: 1px solid black;
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 500px;
+        height: 600px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 500px;
+        height: 600px;
+    }
+    .absolute{
+        width: 500px;
+        height: 600px;
+    }
+}
+
+
+
+@media only screen and (max-width: 580px){
+
+    /* .Container-HomePageTop-item{
+        margin: 0 auto;
+        width: 86%;
+       
+        
+        display: flex;
+        flex-flow: row wrap ;
+        justify-content: center;
+        align-items: center;
+    } */
+    .HomePageTop-title h1{
+        font-size: 50px;
+    }
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 400px;
+        height: 450px;
+        margin-bottom: 80px;
+        border: 1px solid black;
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 400px;
+        height: 450px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 400px;
+        height: 450px;
+    }
+    .absolute{
+        width: 400px;
+        height: 450px;
+    }
+}
+
+@media only screen and (max-width: 467px){
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 300px;
+        height: 350px;
+        margin-bottom: 80px;
+        border: 1px solid black;
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 300px;
+        height: 350px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 300px;
+        height: 350px;
+    }
+    .absolute{
+        width: 300px;
+        height: 350px;
+    }
+}
+
+
+@media only screen and (max-width: 345px){
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 250px;
+        height: 350px;
+        margin-bottom: 80px;
+        border: 1px solid black;
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 250px;
+        height: 350px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 250px;
+        height: 350px;
+    }
+    .absolute{
+        width: 250px;
+        height: 350px;
+    }
+}
+
+@media only screen and (max-width: 280px){
+    .Container-HomePageTop-item-relative{
+        position: relative;
+        width: 200px;
+        height: 300px;
+        margin-bottom: 80px;
+        border: 1px solid black;
+    }
+    
+    .item{
+        z-index: 0;
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        cursor: pointer;    
+    }
+    .item img{
+        width: 200px;
+        height: 300px;
+    }
+    .absolute{
+        width: 200px;
+        height: 300px;
+    }
+}
+@media only screen and (max-width: 280px){
+    .HomePageTop-title h1{
+        font-size: 40px;
+    }
+}

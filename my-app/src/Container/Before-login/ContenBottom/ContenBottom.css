@@ -1,0 +1,119 @@
+.Container-wapper{
+    background-color: black;
+    color: #757575;
+    width: 100%;
+    /* display: flex;
+    align-items: center; */
+  /* height: 700px; */
+}
+.Container{
+   margin: 0px auto;
+   padding-top: 60px;
+   padding-bottom: 15px;
+   align-items: center;
+   width: 90%;
+   /* border: 1px solid white; */
+   padding-bottom: 10px;
+}
+.Container h3{
+    width: 70%;
+    margin: 0 auto;
+}
+.button-p{
+    width: 70%;
+    margin: 0 auto;
+    line-height: 3.5;
+    /* border: 1px solid white; */
+}
+.button-p1 {
+    padding: 15px 40px;
+    /* border: 1px solid black; */
+    cursor: pointer; 
+    background-color: black;
+    color:#757575 ;
+    font-size: 20px;
+    border: 1px solid #757575;
+}
+.button-p p{
+    font-size: 14px;
+}
+.Container-ContentBottom{
+    margin: 30px auto;
+    /* border: 1px solid red; */
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.Container-ContentBottom-item{
+    line-height: 2.2;
+    /* border: 1px solid white; */
+}
+.Container-ContentBottom-item ul{
+    list-style-type: none;
+    /* border: 1px solid white; */
+
+}
+.Container-ContentBottom-item a{
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+.Container-ContentBottom-item a:hover{
+    text-decoration: underline #757575;
+  }
+
+
+
+
+
+
+
+  @media only screen and (max-width: 900px){
+    .Container h3{
+        width: 100%;
+    }
+    .Container-ContentBottom{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+  }
+
+
+
+  @media only screen and (max-width: 710px){
+    .Container{
+      text-align: center;
+     }
+    .Container h3{
+       text-align: center;
+    }
+    .Container-ContentBottom{
+        width: 70%;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .Container-ContentBottom-item{
+        line-height: 2.2;
+        width: 50%;
+        padding-top: 15px;
+    }
+    
+  }
+
+
+
+  @media only screen and (max-width: 530px){
+    .Container-ContentBottom-item{
+        line-height: 2;
+        width: 100%;
+        padding-top: 20px;
+    }
+    .button-p1 {
+        padding: 10px 20px; 
+    }
+  }

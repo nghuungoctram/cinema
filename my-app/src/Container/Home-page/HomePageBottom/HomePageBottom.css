@@ -1,0 +1,259 @@
+.HomePageSlideShow-content{
+    background-color: rgba(0, 0, 0, 0.6);
+    padding-top: 100px;
+    margin-bottom:4px;
+     width: 100%;
+ }
+ .HomePageSlideShow-content-wapper{
+     margin: 0 auto;
+     width: 86%;
+ }
+ .HomePageSlideShow-content-left{
+     display: flex;
+    width: 100%;
+ }
+ .HomePageSlideShow-content-right{
+     display: flex;
+     width: 100%;
+ }
+ .HomePageSlideShow-content-left-imgtop{
+     z-index: 0;
+     position: relative;
+     margin: 0 auto;
+     margin-left:100px;
+     width: 500px;
+     height: 550px;
+     display: block;
+ }
+ .HomePageSlideShow-content-left-imgtop-img1{
+     position: absolute;
+     width: 40%;
+     height: 250px;
+     z-index: 1;
+ }
+ .HomePageSlideShow-content-left-imgtop-img2{
+     position: absolute;
+     width: 70%;
+     height: 80%;
+     top: 55px;
+     left: 15%;
+     z-index: 2;
+ }
+ .HomePageSlideShow-content-left-imgtop-img3{
+    bottom: 0;
+    right: 0;
+     position: absolute;
+     width: 40%;
+     height: 250px;
+     z-index: 3;
+ }
+ .HomePageSlideShow-content-left-imgtop img{
+     width: 100%;
+     height: 100%;
+ }
+ 
+ .HomePageSlideShow-content-left-textbotton{
+     width: 50%;
+ }
+ .HomePageSlideShow-left-textbotton{
+     margin:100px auto;
+     width: 80%;
+     height: 80%;
+     text-align: left;
+ }
+ .HomePageSlideShow-left-textbotton p{
+     color:black;
+     padding-bottom: 30px;
+     font-weight: 400;
+     font-size: 18px;
+ }
+ .HomePageSlideShow-left-textbotton h1{
+     color: black;
+     padding-bottom: 30px;
+     font-size: 50px;
+ }
+ .HomePageSlideShow-left-textbotton button {
+     background-color: black;
+ }
+
+
+
+ 
+ .HomePageSlideShow-content-right-textbotton{
+     margin-top: 100px;
+     width: 50%;
+ }
+ .HomePageSlideShow-right-textbotton{
+     margin: 100px auto;
+     width: 80%;
+     height: 80%;
+     text-align: right;
+ }
+ 
+ .HomePageSlideShow-content-right-textbotton p{
+     color:black;
+     padding-bottom: 30px;
+     font-weight: 400;
+     font-size: 18px;
+ }
+ .HomePageSlideShow-content-right-textbotton h1{
+     color:black;
+     padding-bottom: 30px;
+     font-size: 50px;
+ }
+ .HomePageSlideShow-right-textbotton button {
+    background-color: black;
+}
+ 
+ .HomePageSlideShow-content-right-imgtop{
+     width: 500px; display: block;
+     z-index: 0;
+     position: relative;
+     margin: 90px auto;
+     margin-right: 100px;
+     height: 550px;
+ }
+ .HomePageSlideShow-content-right-imgtop-img1{
+     top:0;
+     right: 0;
+     position: absolute;
+     width: 40%;
+     height: 250px;
+     z-index: 1;
+ }
+ 
+ .HomePageSlideShow-content-right-imgtop-img2{
+     position: absolute;
+     width: 70%;
+     height: 80%;
+     top: 55px;
+     left: 15%;
+     z-index: 2;
+ }
+ .HomePageSlideShow-content-right-imgtop-img3{
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 40%;
+    height: 250px;
+    z-index: 3;
+ }
+ .HomePageSlideShow-content-right-imgtop img{
+     width: 100%;
+     height: 100%;
+ }
+
+
+
+
+
+
+
+
+
+ @media only screen and (max-width: 1159px){
+    .HomePageSlideShow-left-textbotton h1{
+        font-size: 35px;
+    }
+    .HomePageSlideShow-content-right-textbotton h1{
+        font-size: 35px;
+    }
+}
+@media only screen and (max-width: 1125px){
+    .HomePageSlideShow-content-right-textbotton{
+        width: 50%; 
+    }
+    .HomePageSlideShow-content-left{
+        display: flex;
+       flex-wrap: wrap;
+       width: 100%;       
+    }
+    .HomePageSlideShow-content-left-imgtop{
+        margin: 0px auto;
+        width: 700px;
+        height: 700px;
+    }
+    .HomePageSlideShow-content-left-textbotton{
+        width: 100%;
+    }
+    .HomePageSlideShow-left-textbotton{
+        margin:50px auto;
+        width: 100%;
+        text-align: left;
+    }
+     
+
+    .HomePageSlideShow-content-right{
+        display: flex;
+       flex-wrap: wrap;
+       width: 100%;       
+    }
+    .HomePageSlideShow-content-right-imgtop{ 
+        margin: 0px auto; 
+        margin-bottom: 100px;
+        width: 700px;
+        height: 700px;
+    }
+    .HomePageSlideShow-content-right-textbotton{
+        width: 100%;
+        margin: 0;
+    }
+    .HomePageSlideShow-right-textbotton{
+        margin:50px auto;
+        width: 100%;
+        text-align: right;
+    }  
+}
+
+
+
+@media only screen and (max-width: 665px){
+    .HomePageSlideShow-content-left-imgtop{
+        width: 700px;
+        height: 550px; 
+    }
+    .HomePageSlideShow-content-right-imgtop{
+        width: 700px;
+        height: 550px; 
+    }
+}
+
+@media only screen and (max-width: 535px){
+    .HomePageSlideShow-content-left-imgtop{
+        width: 700px;
+        height: 450px;
+    }
+    .HomePageSlideShow-content-right-imgtop{
+        width: 700px;
+        height: 450px;
+    }
+}
+
+@media only screen and (max-width: 375px){
+    .HomePageSlideShow-content-left-imgtop{
+        width: 700px;
+        height: 350px;    
+    }
+    .HomePageSlideShow-content-left-imgtop-img1{
+        height: 150px;
+    }
+    .HomePageSlideShow-content-left-imgtop-img3{
+         height: 150px;     
+     }
+     .HomePageSlideShow-content-left-textbotton h1{
+        font-size: 30px;
+    }
+     .HomePageSlideShow-content-right-imgtop{
+        width: 700px;
+        height: 350px;    
+    }
+    .HomePageSlideShow-content-right-imgtop-img1{
+        height: 150px;
+    }
+    .HomePageSlideShow-content-right-imgtop-img3{
+         height: 150px;     
+     }
+     .HomePageSlideShow-content-right-textbotton h1{
+        font-size: 30px;
+    }
+}

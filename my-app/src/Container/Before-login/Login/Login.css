@@ -1,0 +1,110 @@
+.img-wapper-user img{
+    -webkit-filter: brightness(40%);  
+    width: 100%;
+    height: 100vh;
+}
+
+.header-wapper1{
+    z-index: 99;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+}
+.wapper-content-header-login{
+   padding-top: 45px; 
+   padding-bottom: 100px;
+  background-color: rgb(0, 0, 0, 0.7);
+  width: 500px;
+  margin: 100px auto;
+  text-align: center;
+  /* border: 1px solid red; */
+}
+.wapper-content-header-login h1{
+    padding-bottom: 25px;
+    color: white;
+}
+.wapper-content-header-login from{
+    line-height: 3.7;
+}
+.wapper-content-header-login input{
+    border-radius: 7px;
+    font-size: 18px;
+    width: 70%;
+    height: 50px;
+}
+.inp-text{
+    background-color: #333;
+    padding-left: 20px;
+    color:white;
+    border: 1px solid #333;
+}
+.inp-submit{
+    border: 1px solid red;
+    margin-top: 30px;
+    background-color: rgb(224, 19, 19);
+    color: white;
+    cursor: pointer;
+}
+.loginfb-linkSignup{
+    text-align: left;
+    width: 70%;
+    margin: 0 auto;
+}
+.fab {
+    font-size: 23px;
+    color:#0080ff;
+    padding-right: 10px;
+}
+.loginfb-linkSignup button{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-top: 30px;
+    font-size: 14px;
+    color: rgb(110, 108, 108);
+    /* border: 1px solid  rgb(0, 0, 0, 0.6); */
+}
+.link-Sigup{
+    text-decoration: underline;
+    color: white;
+}
+.title{
+    color: rgb(110, 108, 108);
+    padding-top: 20px;
+    font-size: 17px;
+}
+.content{
+    font-size: 14px;
+    color:rgb(110, 108, 108);
+    padding-top: 10px;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 735px){
+    .wapper{
+        background-color: black;
+        height: 100vh;
+        margin-bottom: 4px;   
+    }
+    .img-wapper-user{
+        display:none;
+    }
+    .wapper-content-header-login{
+        width: 80%;
+        text-align: left;
+    }
+    .wapper-content-header-login input{
+        width: 100%;
+    }
+    .inp-text{
+        padding-left: 0;
+    }
+    .loginfb-linkSignup{
+        width: 100%;
+    }
+}

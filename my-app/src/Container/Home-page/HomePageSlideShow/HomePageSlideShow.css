@@ -1,0 +1,76 @@
+
+.HomePageSlideShow-img{
+    padding-top: 55px;
+}
+.HomePageSlideShow-img img{
+    width: 100%;
+   
+}
+.HomePageSlideShow-Container-img-1{
+    position: relative;
+    padding-bottom: 1px;
+}
+.HomePageSlideShow-Container-img-1 img{
+    width: 100%;
+    height: 120vh;
+}
+.HomePageSlideShow-Container-title-item{
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+.HomePageSlideShow-title-item{
+    margin: 0 auto;
+    text-align: center;
+    width: 86%;
+    height: 100%;
+    padding-bottom: 70px;
+}
+.HomePageSlideShow-title h1{
+    padding-top: 20px;
+    color: white;
+    font-size: 60px;
+}
+.HomePageSlideShow-title p{
+    padding-top: 120px;
+    color: white;
+    font-size: 20px;
+}
+.HomePageSlideShow-SlideShow{
+    /* position: absolute; */
+    width: 100%;
+    height: 700px; 
+    /* border: 1px solid red; */
+}
+.HomePageSlideShow-SlideShow-item{
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 830px){
+    .HomePageSlideShow-title-item h1{
+        font-size: 50px;
+    }
+}
+@media only screen and (max-width: 690px){
+    .HomePageSlideShow-title-item h1{
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width: 555px){
+    .HomePageSlideShow-title-item h1{
+        font-size: 35px;
+    }
+}
+@media only screen and (max-width: 467px){
+    .HomePageSlideShow-title-item  h1{
+        font-size: 30px;
+    }
+}

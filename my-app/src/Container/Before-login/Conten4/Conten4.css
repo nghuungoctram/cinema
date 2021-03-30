@@ -1,0 +1,130 @@
+.wapper-container-conten4{
+    background-color: rgb(70, 63, 63);
+    padding-bottom: 10px;
+  
+}
+.container-conten4{
+    background-color: black;
+    /* border: 1px solid white; */
+}
+.conten4 {
+    /* border: 1px solid white; */
+    width: 58%;
+    margin: 0px auto;
+    padding-bottom: 40px;
+}
+.conten4 h1{
+    text-align: center;
+    font-size: 50px ;
+    color: white;
+    padding-bottom: 40px;
+}
+.conten4 ul{
+    list-style-type: none;
+     line-height: 20px;
+     line-height: 5.5;
+     padding-bottom: 50px;
+}
+.button-coslapse{
+    border: 1px solid black;
+    background-color: #303030;
+    color: white;
+   width:100%;
+   height: 80px;
+   text-align: left;
+   padding-left: 20px;
+   font-size: 23px;
+   cursor: pointer;
+}
+.conten4 h3{
+    padding-bottom: 20px;
+    color: white;
+}
+.conten4 div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    line-height: 2;
+    margin: 0 auto;
+    color: white;
+    background-color: #303030;
+    width: 100%;
+    margin-top: -5px;
+    margin-bottom: 4px;
+    padding-top: 15px;
+}
+.conten4 div p{
+    /* border: 1px solid white; */
+    width: 90%;
+    padding-bottom: 10px;  
+}
+.input-email {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    /* border: 1px solid white; */
+}
+
+.input-email input{
+    font-size: 16px;
+    padding-left: 10px;
+    width :450px;
+    height: 60px;
+}
+.input-email button{
+    cursor: pointer;
+    height: 60px;
+    width :150px;
+    background-color: red;
+    color: aliceblue;
+    font-size: 20px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 1200px){
+    .conten4 h3{
+        text-align: center;
+    }
+    .conten4 {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 950px){
+   
+    .conten4 {
+        width: 80%;
+    }
+    .conten4 ul{
+         line-height: 4.2;   
+    }
+    .button-coslapse{
+       height: 60px;
+       font-size: 20px;
+    }
+    .conten4 div p{
+        font-size: 20px;
+    }
+    
+    .input-email {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .input-email input{
+        width :100%;
+        height: 45px;
+    }
+    .input-email button{
+        border-radius: 7px;
+       margin-top: 15px;
+       height: 45px;
+       width :120px;
+       font-size: 18px;
+       border: 1px solid red;
+    }
+}
+

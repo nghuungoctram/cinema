@@ -2,6 +2,7 @@ import React from 'react'
 import '../Menu/Menu.css'
 import '../Login/Login.css'
 import hinh from '../Img/Backgroud/VN-vi-20210308-popsignuptwoweeks-perspective_alpha_website_large.jpg'
+import Footer from '../ContenBottom/ContenBottom'
 import {
     BrowserRouter as Router,
     Switch,
@@ -11,8 +12,7 @@ import {
 function Login() {
     return (
 
-        < div className="wapper" >
-
+        < div className="wapper-user" >
             <div className="header-wapper">
                 <div className="header-story">
                     <h2>NETFLIX</h2>
@@ -20,7 +20,6 @@ function Login() {
             </div>
             <div className='header-wapper1'>
                 <div className="wapper-content-header-login">
-
                     <h1>Đăng Nhập</h1>
                     <from>
                         <input className='inp-text' type='email' placeholder='Địa chỉ Email' required></input><br />
@@ -37,8 +36,8 @@ function Login() {
             <div className='img-wapper-user'>
                 <img src={hinh} />
             </div>
-        </div >
 
+        </div >
     )
 }
 

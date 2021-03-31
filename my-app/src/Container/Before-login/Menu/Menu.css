@@ -5,14 +5,15 @@
 .wapper{
     position: relative;
     background-color: rgb(70, 63, 63);
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     /* border: 1px solid red; */
     
 }
 .img-wapper img{
     -webkit-filter: brightness(40%);  
     width: 100%;
-    height: 100vh;
+    height: 730px;
+    /* border: 1px solid 10greenyellow; */
 }
 .header-wapper{
     z-index: 1000;
@@ -81,7 +82,7 @@ border: 1px solid white;
 }
 .wapper-content-header{
   object-fit: contain;
-    margin: 200px auto;
+    margin: 150px auto;
     text-align: center;
     width: 80%;
     /* background-color: greenyellow; */
@@ -91,7 +92,7 @@ border: 1px solid white;
     margin:0 auto ;
      width: 57%;
     color: white;
-    font-size: 45px;
+    font-size: 50px;
    
 }
 .wapper-content-header h2{

@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 function Registration() {
     return (
-        < div className="wapper" >
+        < div className="wapper-user" >
             <div className="header-wapper">
 
                 <div className="header-story">

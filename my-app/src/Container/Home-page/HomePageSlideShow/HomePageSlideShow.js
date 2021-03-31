@@ -25,7 +25,7 @@ function HomePageSlideShow() {
                                         <div className='border'></div>
                                     </div>
                                     <div className='HomePageSlideShow-item'>
-                                        {/* <Slider /> */}
+                                        <Slider />
                                     </div>
                                 </div>
                             </div>

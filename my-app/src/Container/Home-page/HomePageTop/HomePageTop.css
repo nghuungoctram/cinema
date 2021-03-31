@@ -24,19 +24,21 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    /* justify-content: space-around; */
 }
 .Container-HomePageTop-item-relative{
     position: relative;
-    width: 360px;
+    width: 30%;
     /* border: 1px solid black; */
     height: 469px;
     margin-bottom: 80px;
 }
 .item{
+    object-fit: contain;
     z-index: 0;
     position: absolute;
     width: 100%;
-    height: 469px;
+    height: 100%;
     cursor: pointer;    
 }
 
@@ -47,8 +49,10 @@
     box-shadow: 2px 3px 4px rgba(0, 0, 0, .5);
     z-index: -2;
     /* background-size: contain; */
+    /* object-fit: contain; */
     width: 100%;
-    height: 463px;
+    height: 100%;
+    /* height: 463px; */
     /* height: 400px; */
     position: absolute;
 }
@@ -68,7 +72,7 @@
 .absolute{
     z-index: 1;
     position: absolute;
-    width: 100%;
+    width: 100%; 
     height: 469px;
     box-shadow: 
     inset 0 -8em 1em  rgba(255,255,255, 0.5),
@@ -152,6 +156,10 @@
 
 
 @media only screen and (max-width: 1013px){
+    .Container-HomePageTop-item{
+        justify-content: space-around;
+    }
+    
     .Container-HomePageTop-item-relative{
         position: relative;
         width: 400px;

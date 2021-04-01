@@ -7,30 +7,27 @@ const JWT_SECRET_KEY = "BoxinhDep";
 module.exports = async function (req, res, next) {
     try {
         let token = req.headers['authorization'];
-        console.log(token)
         if (token) {
             let header = token.replace('Bearer ', '');
-            //console
-            console.log("HEADER: " + header);
-
+            console.log("header la:", header)
             let checkToken = jwt.verify(header, JWT_SECRET_KEY);
-            console.log("CHECK TOKEN:" + checkToken);
-
+            console.log("token la:", checkToken);
             let user = await queryBuilder('user').where('UserId', checkToken.UserId).first();
-            // console.log("user:", user);
-
+            console.log("user la:", user);
             if (!checkToken || !user) {
-                res.status(200).json("Access Denied 1")
+                // if (user !== checkToken) {
+                res.status(200).json("Unauthorized")
             } else {
                 req.userLogin = user;
-                console.log("vo toi roi ne", req.userLogin)
+                res.status(200).json("tai khoan da duoc dang ki");
+                // res.status(200).json(req.userLogin);
+                console.log("tai khoan da duoc dang ki")
                 next();
             }
         } else {
-            res.status(200).json("Access Denied 2");
+            res.status(200).json("No token provided");
         }
     } catch (e) {
-        console.log(e);
-        res.status(403).json("Access Denied 3")
+        res.status(403).json("Access denied")
     }
 }

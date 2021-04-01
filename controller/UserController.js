@@ -32,7 +32,7 @@ class UserController {
                 status: "Ok from login usercontroller",
                 error: null,
                 data: {
-                    result: data
+                    result: data,
                 }
             });
         } catch (e) {

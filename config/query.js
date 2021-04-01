@@ -34,7 +34,7 @@ var connect = mysql.createConnection({
 
 // connect.connect(function (err) {
 //     if (err) throw err;
-//     let sql = "CREATE TABLE user (UserId varchar(255) NOT NULL, Username varchar(255) DEFAULT NULL, Password varchar(255) DEFAULT NULL, Address varchar(255) DEFAULT NULL, City varchar(255) DEFAULT NULL, Country varchar(255) DEFAULT NULL, Phone varchar(255) DEFAULT NULL,PRIMARY KEY (UserId))";
+//     let sql = "CREATE TABLE user (UserId varchar(255) NOT NULL, Username varchar(255) DEFAULT NULL, Password varchar(255) DEFAULT NULL, Email varchar(255) NOT NULL, Address varchar(255) DEFAULT NULL, City varchar(255) DEFAULT NULL, Country varchar(255) DEFAULT NULL, Phone varchar(255) DEFAULT NULL,PRIMARY KEY (UserId))";
 //     connect.query(sql, (error, result) => {
 //         if (error) throw error;
 //         console.log("CREATE SUCCESSFUL")

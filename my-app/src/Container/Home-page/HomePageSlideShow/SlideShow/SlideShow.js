@@ -1,8 +1,8 @@
 import React from 'react'
-import Slider from 'react-slick'
+// import Slider from 'react-slick'
 import Carousel from 'react-elastic-carousel';
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+// import "slick-carousel/slick/slick.css"
+// import "slick-carousel/slick/slick-theme.css"
 import './SlideShow.css'
 import hinh1 from '../SlideShow/imgslideshow/landing-inner-1.jpg'
 import hinh2 from '../SlideShow/imgslideshow/landing-port-img-1-1.jpg'

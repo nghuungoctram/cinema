@@ -7,6 +7,7 @@ import ContenBottom from "../Before-login/ContenBottom/ContenBottom";
 import Login from '../Before-login/Login/Login'
 import HomePage from '../Home-page/HomePage'
 import Registration from '../Before-login/Registration/Registration'
+
 import {
     BrowserRouter as Router,
     Switch,

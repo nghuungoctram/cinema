@@ -2,17 +2,20 @@ import React from 'react'
 import '../Menu/Menu.css'
 import '../Login/Login.css'
 import hinh from '../Img/Backgroud/VN-vi-20210308-popsignuptwoweeks-perspective_alpha_website_large.jpg'
+import useLogin from '../Registration/useRegistration'
+import validate from '../Registration/validateInfo'
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
-function Login() {
+const Login = () => {
+
+    const { handleChange, handleSubmit, values, errors } = useLogin(validate);
     return (
 
-        < div className="wapper" >
-
+        < div className="wapper-user" >
             <div className="header-wapper">
                 <div className="header-story">
                     <h2>NETFLIX</h2>
@@ -20,13 +23,33 @@ function Login() {
             </div>
             <div className='header-wapper1'>
                 <div className="wapper-content-header-login">
-
                     <h1>Đăng Nhập</h1>
-                    <from>
-                        <input className='inp-text' type='email' placeholder='Địa chỉ Email' required></input><br />
-                        <input className='inp-text' type='password' placeholder='Mật khẩu'></input><br />
-                        <Link to='/home'><input className='inp-submit' type='submit' placeholder='Đăng nhập' value='Đăng nhập'></input></Link>
-                    </from>
+                    <form onSubmit={handleSubmit} className='form' noValidate>
+                        <div className='form-inputs'>
+                            <input
+                                className='inp-text'
+                                type='email'
+                                name='username'
+                                placeholder='Địa chỉ Email'
+                                value={values.email}
+                                onChange={handleChange}
+                            />
+                            {errors.email && <p>{errors.email}</p>}
+                        </div>
+                        <div className='form-inputs'>
+
+                            <input
+                                className='inp-text'
+                                type='password'
+                                name='password'
+                                placeholder='Mật khẩu'
+                                value={values.password}
+                                onChange={handleChange}
+                            />
+                            {errors.password && <p>{errors.password}</p>}
+                        </div>
+                        <input className='inp-submit' type='submit' placeholder='Đăng nhập' value='Đăng nhập'></input>
+                    </form>
                     <div className='loginfb-linkSignup'>
                         <Link><button><i class="fab fa-facebook-square"></i><span>Đăng nhập bằng tài khoản facebook</span></button> </Link>
                         <p className='title'>Bạn mới tham gia Netflix? <Link exact to='/'> <span className='link-Sigup'>Đăng ký ngay</span></Link></p>
@@ -37,8 +60,8 @@ function Login() {
             <div className='img-wapper-user'>
                 <img src={hinh} />
             </div>
-        </div >
 
+        </div >
     )
 }
 

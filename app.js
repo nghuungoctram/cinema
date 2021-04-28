@@ -1,13 +1,22 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 
-let app = express();
+let app = express(),
+    fileUpload = require('express-fileupload'),
+    path = require('path'),
+    db = require('./config/query');
+
 let filmRouter = require('./routes/film');
-let cinemaRouter = require('./routes/cinema')
-let userRouter = require('./routes/user')
+let cinemaRouter = require('./routes/cinema');
+let userRouter = require('./routes/user');
+// let imgRouter = require('./routes/img');
 
+// all evironemtn
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 
 app.get('/', (req, res, next) => {
     res.status(200).json({
@@ -19,9 +28,13 @@ app.get('/', (req, res, next) => {
     });
 });
 
+// query connection
+db.query;
+
 app.use('/film', filmRouter);
 app.use('/cinema', cinemaRouter);
 app.use('/user', userRouter);
+// app.use('/img', imgRouter);
 
 app.use("*", (req, res, next) => {
     res.status(404).json({
@@ -35,5 +48,3 @@ app.use("*", (req, res, next) => {
 })
 
 module.exports = app;
-
-

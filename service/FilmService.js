@@ -2,8 +2,6 @@
 
 const queryBuilder = require("../config/database");
 
-// const queryBuilder = require("../config/query");
-
 class FilmService {
     static async getList(req) {
         try {

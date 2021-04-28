@@ -1,11 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const UserController = require("../controller/UserController");
-const auth = require("../midleware/auth")
-const validate = require("../validate/validate")
+const AuthMiddleware = require("../midleware/AuthMiddleware")
 
-router.post('/create', auth, UserController.create);
+router.post('/create', AuthMiddleware, UserController.create);
 router.post('/login', UserController.login);
-// router.post('/auth', auth);
+
+//change password
+router.post('/forgotpassword', UserController.ForgotPasswordController);
+router.post('/resetpassword', UserController.ResetPasswordController);
+
+// //change avatar user 
+router.post('/addavatar', UserController.UploadController);
 
 module.exports = router;

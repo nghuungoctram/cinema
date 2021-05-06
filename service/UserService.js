@@ -15,23 +15,41 @@ class UserService {
                 Email = param.Email,
                 emailCheck = await queryBuilder('user').where('Email', Email).first(),
                 userCheck = await queryBuilder('user').where('Username', Username).first()
+
             if (emailCheck) {
                 console.log("your email: '" + Email + "' already in use");
                 return "your email: '" + Email + "' already in use";
             } else if (userCheck) {
                 console.log("your username: '" + Username + "' already in use");
                 return "your username: '" + Username + "' already in use";
+            } else if (!req.files) {
+                return res.status(400).send('No files were uploaded.');
             } else {
-                let dataInsert = {
-                    UserId: uuid.v4(),
-                    Username: param.Username,
-                    Password: bcryptjs.hashSync(param.Password, 10),
-                    Email: param.Email
+                let file = req.files.upload_image,
+                    Imgname = file.name;
+                if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+
+                    let dataInsert = {
+                        UserId: uuid.v4(),
+                        Username: param.Username,
+                        Password: bcryptjs.hashSync(param.Password, 10),
+                        Email: param.Email,
+                        ImgId: uuid.v4(),
+                        Imgname: Imgname
+                    }
+                    await queryBuilder('user').insert(dataInsert);
+                    console.log("create new user successfull! ", dataInsert)
+                    return "Create new user successfull ";
                 }
-                await queryBuilder('user').insert(dataInsert);
-                console.log("create new user successfull! ", dataInsert)
-                return "Create new user successfull ";
             }
+            // } else {
+            //     let dataInsert = {
+            //         UserId: uuid.v4(),
+            //         Username: param.Username,
+            //         Password: bcryptjs.hashSync(param.Password, 10),
+            //         Email: param.Email
+            //     }
+            //     await queryBuilder('user').insert(dataInsert);
         } catch (e) {
             console.log(e);
             return e;
@@ -114,29 +132,29 @@ class UserService {
         }
     }
 
-    static async UploadService(req, res) {
-        try {
-            if (!req.files) {
-                return res.status(400).send('No files were uploaded.');
-            } else {
-                let file = req.files.upload_image,
-                    Imgname = file.name;
-                if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+    // static async UploadService(req, res) {
+    //     try {
+    //         if (!req.files) {
+    //             return res.status(400).send('No files were uploaded.');
+    //         } else {
+    //             let file = req.files.upload_image,
+    //                 Imgname = file.name;
+    //             if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
 
-                    let dataInsert = {
-                        ImgId: uuid.v4(),
-                        Imgname: Imgname
-                    }
-                    await queryBuilder('user').insert(dataInsert);
-                    console.log("Upload ok from service! ", dataInsert)
-                    return "Upload ok from service!";
-                }
-            }
-        } catch (e) {
-            console.log(e);
-            return e;
-        }
-    }
+    //                 let dataInsert = {
+    //                     ImgId: uuid.v4(),
+    //                     Imgname: Imgname
+    //                 }
+    //                 await queryBuilder('user').insert(dataInsert);
+    //                 console.log("Upload ok from service! ", dataInsert)
+    //                 return "Upload ok from service!";
+    //             }
+    //         }
+    //     } catch (e) {
+    //         console.log(e);
+    //         return e;
+    //     }
+    // }
 }
 
 module.exports = UserService;

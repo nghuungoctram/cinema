@@ -85,24 +85,24 @@ class UserController {
         }
     }
 
-    static async UploadController(req, res, next) {
-        try {
-            await ImgService.UploadService(req);
-            res.status(200).json({
-                status: " Upload Ok from controller!",
-                erorr: null
-            });
-        } catch (e) {
-            res.status(200).json({
-                status: "Upload fail from controller!",
-                error: {
-                    code: 1000,
-                    message: "Server Error"
-                },
-                data: null
-            });
-        }
-    }
+    // static async UploadController(req, res, next) {
+    //     try {
+    //         await UserService.UploadService(req);
+    //         res.status(200).json({
+    //             status: " Upload Ok from controller!",
+    //             erorr: null
+    //         });
+    //     } catch (e) {
+    //         res.status(200).json({
+    //             status: "Upload fail from controller!",
+    //             error: {
+    //                 code: 1000,
+    //                 message: "Server Error"
+    //             },
+    //             data: null
+    //         });
+    //     }
+    // }
 }
 
 module.exports = UserController;

@@ -9,4 +9,3 @@ var connect = mysql.createConnection({
 
 connect.connect();
 global.db = connect;
-

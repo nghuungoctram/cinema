@@ -22,34 +22,17 @@ class UserService {
             } else if (userCheck) {
                 console.log("your username: '" + Username + "' already in use");
                 return "your username: '" + Username + "' already in use";
-            } else if (!req.files) {
-                return res.status(400).send('No files were uploaded.');
             } else {
-                let file = req.files.upload_image,
-                    Imgname = file.name;
-                if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
-
-                    let dataInsert = {
-                        UserId: uuid.v4(),
-                        Username: param.Username,
-                        Password: bcryptjs.hashSync(param.Password, 10),
-                        Email: param.Email,
-                        ImgId: uuid.v4(),
-                        Imgname: Imgname
-                    }
-                    await queryBuilder('user').insert(dataInsert);
-                    console.log("create new user successfull! ", dataInsert)
-                    return "Create new user successfull ";
+                let dataInsert = {
+                    UserId: uuid.v4(),
+                    Username: param.Username,
+                    Password: bcryptjs.hashSync(param.Password, 10),
+                    Email: param.Email
                 }
+                await queryBuilder('user').insert(dataInsert);
+                console.log("create new user successfull! ", dataInsert)
+                return "Create new user successfull ";
             }
-            // } else {
-            //     let dataInsert = {
-            //         UserId: uuid.v4(),
-            //         Username: param.Username,
-            //         Password: bcryptjs.hashSync(param.Password, 10),
-            //         Email: param.Email
-            //     }
-            //     await queryBuilder('user').insert(dataInsert);
         } catch (e) {
             console.log(e);
             return e;
@@ -132,29 +115,30 @@ class UserService {
         }
     }
 
-    // static async UploadService(req, res) {
-    //     try {
-    //         if (!req.files) {
-    //             return res.status(400).send('No files were uploaded.');
-    //         } else {
-    //             let file = req.files.upload_image,
-    //                 Imgname = file.name;
-    //             if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
-
-    //                 let dataInsert = {
-    //                     ImgId: uuid.v4(),
-    //                     Imgname: Imgname
-    //                 }
-    //                 await queryBuilder('user').insert(dataInsert);
-    //                 console.log("Upload ok from service! ", dataInsert)
-    //                 return "Upload ok from service!";
-    //             }
-    //         }
-    //     } catch (e) {
-    //         console.log(e);
-    //         return e;
-    //     }
-    // }
+    static async UploadService(req, res) {
+        try {
+            let param = req.body,
+                Email = param.Email,
+                emailCheck = await queryBuilder('user').where('Email', Email).first();
+            if (!req.files) {
+                return res.status(400).send('No files were uploaded.');
+            } else if (emailCheck) {
+                let file = req.files.upload_image,
+                    Imgname = file.name;
+                if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
+                    let dataInsert = {
+                        Imgname: Imgname
+                    }
+                    await queryBuilder('user').update(dataInsert);
+                    console.log("Upload ok from service! ", dataInsert)
+                    return "Upload ok from service!";
+                }
+            }
+        } catch (e) {
+            console.log(e);
+            return e;
+        }
+    }
 }
 
 module.exports = UserService;

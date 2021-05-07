@@ -1,6 +1,4 @@
 const queryBuilder = require("../config/database")
-const uuid = require("uuid");
-const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET_KEY = "BoxinhDep";
 
@@ -20,7 +18,6 @@ module.exports = async function (req, res, next) {
             } else {
                 req.userLogin = user;
                 res.status(200).json("tai khoan da duoc dang ki");
-                // res.status(200).json(req.userLogin);
                 console.log("tai khoan da duoc dang ki")
                 next();
             }

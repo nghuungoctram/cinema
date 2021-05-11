@@ -145,7 +145,6 @@ class UserService {
                             Imgname: Imgname
                         }
                         await queryBuilder('user').where('Email', Email).update(dataInsert);
-                        // var sql = "INSERT INTO `users_image`(`image`) VALUES ( '" + img_name + "')";
 
                         console.log("Upload ok from service! ", dataInsert);
                         return "Upload ok from service!", file;
@@ -160,18 +159,6 @@ class UserService {
             return e;
         }
     }
-
-    static async profile(req, res) {
-        var message = '';
-        var id = req.params.id;
-        var sql = "SELECT * FROM `users_image` WHERE `id`='" + id + "'";
-        db.query(sql, function (err, result) {
-            if (result.length <= 0)
-                message = "Profile not found!";
-
-            res.render('profile.ejs', { data: result, message: message });
-        });
-    };
 }
 
 module.exports = UserService;

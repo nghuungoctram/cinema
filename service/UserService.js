@@ -6,6 +6,7 @@ const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const JWT_SECRET_KEY = "BoxinhDep";
 const cloudBackend = require('appdrag-cloudbackend');
+let nodemailer = require('nodemailer');
 
 class UserService {
     static async CreateService(req, res) {
@@ -42,12 +43,12 @@ class UserService {
     static async LoginService(req) {
         try {
             let param = req.body,
-                Username = param.Username,
+                Email = param.Email,
                 Password = param.Password,
-                user = await queryBuilder('user').where('Username', Username).first();
+                user = await queryBuilder('user').where('Email', Email).first();
 
             if (!user || !bcryptjs.compareSync(Password, user.Password)) {
-                return " Please check your username and password ";
+                return " Please check your Email and password ";
             } else {
                 let token = jwt.sign({ UserId: user.UserId, Username: user.Username, Email: user.Email }, JWT_SECRET_KEY, { expiresIn: "1h" });
                 console.log("Login succesfull with:", token);
@@ -64,34 +65,46 @@ class UserService {
             let param = req.body,
                 Email = param.Email,
                 Password = param.Password,
-                EmailCheck = await queryBuilder('user').where('Email', Email),
-                PasswordCheck = await queryBuilder('user').where('Password', Password);
-            if (!req.Email) {
-                return "Email not be empty";
-            } else if (EmailCheck) {
-                if (PasswordCheck) {
-                    // let checkUsername = " SELECT Username FROM user WHERE Email = Email",
-                    let checkUsername = await queryBuilder('user').select(Username).where('Email', Email),
-                        checkPassword = " SELECT Password FROM user WHERE Email = Email",
-                        formEmail = "Your Forgotten Password",
-                        subject = "Hi" + checkUsername + ", your old password is :" + checkPassword;
-                    //send email
-                    await cloudBackend.sendEmail("Password Administrator", Email, formEmail, subject)
-                        .then(function (res) {
-                            console.log(res);
-                        });
+                emailCheck = await queryBuilder('user').where('Email', Email),
+                passwordCheck = await queryBuilder('user').where('Password', Password);
+
+            if (emailCheck === Email) {
+                if (Pass === passwordCheck) {
+                    let transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: 'bonguyen1219@gmail.com', // mail của ai người đó sài
+                            pass: '195ngoctram1912.'
+                        }
+                    });
+
+                    let mailOptions = {
+                        from: 'bonguyen1219@gmail.com',
+                        to: Email,
+                        subject: '[ABC Cinema] Please reset your password',
+                        text: 'ABC Cinema password reset'
+                    };
+
+                    transporter.sendMail(mailOptions, function (error, info) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log('Info Email sent:   ' + info.response);
+                        }
+                    });
                     return res.status(200).json('Email Founded!')
                 } else {
                     return res.status(400).json('Wrong password. Try again or click ‘Forgot password’ to reset it')
                 }
             } else {
-                return res.status(400).json('Your email doesnt exits')
+                return 'Your email doesnt exits';
             }
         } catch (e) {
             console.log(e);
             return e;
         }
     }
+
 
     static async ResetPasswordService(req, res) {
         try {
@@ -117,21 +130,29 @@ class UserService {
 
     static async UploadService(req, res) {
         try {
-            let param = req.body,
-                Email = param.Email,
-                emailCheck = await queryBuilder('user').where('Email', Email).first();
+            let param = req.body;
+            Email = param.Email;
+            emailCheck = await queryBuilder('user').where('Email', Email).first();
             if (!req.files) {
                 return res.status(400).send('No files were uploaded.');
-            } else if (emailCheck) {
+            }
+            else if (emailCheck) {
                 let file = req.files.upload_image,
                     Imgname = file.name;
                 if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
-                    let dataInsert = {
-                        Imgname: Imgname
-                    }
-                    await queryBuilder('user').update(dataInsert);
-                    console.log("Upload ok from service! ", dataInsert)
-                    return "Upload ok from service!";
+                    file.mv('public/images/upload_images/' + file.name, async function (err) {
+                        let dataInsert = {
+                            Imgname: Imgname
+                        }
+                        await queryBuilder('user').where('Email', Email).update(dataInsert);
+                        // var sql = "INSERT INTO `users_image`(`image`) VALUES ( '" + img_name + "')";
+
+                        console.log("Upload ok from service! ", dataInsert);
+                        return "Upload ok from service!", file;
+                    });
+
+                } else {
+                    return "This format is not allowed , please upload file with '.png','.gif','.jpg'";
                 }
             }
         } catch (e) {
@@ -139,6 +160,18 @@ class UserService {
             return e;
         }
     }
+
+    static async profile(req, res) {
+        var message = '';
+        var id = req.params.id;
+        var sql = "SELECT * FROM `users_image` WHERE `id`='" + id + "'";
+        db.query(sql, function (err, result) {
+            if (result.length <= 0)
+                message = "Profile not found!";
+
+            res.render('profile.ejs', { data: result, message: message });
+        });
+    };
 }
 
 module.exports = UserService;

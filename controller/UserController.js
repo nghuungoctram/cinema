@@ -49,10 +49,13 @@ class UserController {
 
     static async ForgotPasswordController(req, res, next) {
         try {
-            await UserService.ForgotPasswordService(req);
+            let data = await UserService.ForgotPasswordService(req);
             res.status(200).json({
                 status: " Forgot Ok from controller!",
-                erorr: null
+                erorr: null,
+                data: {
+                    result: data,
+                }
             });
         } catch (e) {
             res.status(200).json({
@@ -80,17 +83,19 @@ class UserController {
                     code: 1000,
                     message: "Server Error"
                 },
-                data: null
             });
         }
     }
 
     static async UploadController(req, res, next) {
         try {
-            await UserService.UploadService(req);
+            let data = await UserService.UploadService(req);
             res.status(200).json({
                 status: " Upload Ok from controller!",
-                erorr: null
+                erorr: null,
+                data: {
+                    result: data,
+                }
             });
         } catch (e) {
             res.status(200).json({

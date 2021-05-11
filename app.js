@@ -34,7 +34,6 @@ db.query;
 app.use('/film', filmRouter);
 app.use('/cinema', cinemaRouter);
 app.use('/user', userRouter);
-// app.use('/img', imgRouter);
 
 app.use("*", (req, res, next) => {
     res.status(404).json({

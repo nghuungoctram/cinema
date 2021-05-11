@@ -13,7 +13,6 @@ module.exports = async function (req, res, next) {
             let user = await queryBuilder('user').where('UserId', checkToken.UserId).first();
             console.log("user la:", user);
             if (!checkToken || !user) {
-                // if (user !== checkToken) {
                 res.status(200).json("Unauthorized")
             } else {
                 req.userLogin = user;

@@ -64,40 +64,34 @@ class UserService {
         try {
             let param = req.body,
                 Email = param.Email,
-                Password = param.Password,
-                emailCheck = await queryBuilder('user').where('Email', Email),
-                passwordCheck = await queryBuilder('user').where('Password', Password);
+                emailCheck = await queryBuilder('user').where('Email', Email).first();
 
-            if (emailCheck === Email) {
-                if (Pass === passwordCheck) {
-                    let transporter = nodemailer.createTransport({
-                        service: 'gmail',
-                        auth: {
-                            user: 'bonguyen1219@gmail.com', // mail của ai người đó sài
-                            pass: '195ngoctram1912.'
-                        }
-                    });
+            if (emailCheck) {
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'bonguyen1219@gmail.com', // mail của ai người đó sài
+                        pass: '195ngoctram1912.'
+                    }
+                });
 
-                    let mailOptions = {
-                        from: 'bonguyen1219@gmail.com',
-                        to: Email,
-                        subject: '[ABC Cinema] Please reset your password',
-                        text: 'ABC Cinema password reset'
-                    };
+                let mailOptions = {
+                    from: 'bonguyen1219@gmail.com',
+                    to: Email,
+                    subject: '[ABC Cinema] Please reset your password',
+                    text: 'ABC Cinema password reset'
+                };
 
-                    transporter.sendMail(mailOptions, function (error, info) {
-                        if (error) {
-                            console.log(error);
-                        } else {
-                            console.log('Info Email sent:   ' + info.response);
-                        }
-                    });
-                    return res.status(200).json('Email Founded!')
-                } else {
-                    return res.status(400).json('Wrong password. Try again or click ‘Forgot password’ to reset it')
-                }
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Info Email sent:   ' + info.response);
+                    }
+                    return 'Info Email sent:   ' + info.response;
+                });
             } else {
-                return 'Your email doesnt exits';
+                return "Your email doesnt exits";
             }
         } catch (e) {
             console.log(e);
@@ -110,17 +104,21 @@ class UserService {
         try {
             let param = req.body,
                 Password = param.Password,
-                ChangePassword = param.ChangePassword;
-            if (!Password) {
-                return res.status(400).json('Password not be empty');
-            } else {
-                if (!ChangePassword) {
-                    return res.status(400).json('New password not be empty');
-                } else {
-                    await queryBuilder('user').update('Password', ChangePassword);
+                ChangePassword = param.ChangePassword,
+                passwordCheck = await queryBuilder('user').where('Password', Password).first();
+
+            if (passwordCheck) {
+                if (ChangePassword.length >= 10 && ChangePassword.length <= 15) {
+                    await queryBuilder('user').where('Password', Password).update('Password', ChangePassword);
                     console.log("Password has changed! =>>>", ChangePassword)
                     return "Password has changed!";
+                } else {
+                    console.log('New password at least 10 characters and at most 15 characters');
+                    return 'New password at least 10 characters and at most 15 characters';
                 }
+            } else {
+                console.log('Password doesnt match');
+                return 'Password doesnt match';
             }
         } catch (e) {
             console.log(e);

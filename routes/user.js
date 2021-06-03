@@ -1,18 +1,21 @@
-const express = require("express");
-const router = express.Router();
-const UserController = require("../controller/UserController");
-const AuthMiddleware = require("../midleware/AuthMiddleware");
-const UserService = require("../service/UserService");
+const express = require("express"),
+    router = express.Router(),
+    UserController = require("../controller/UserController"),
+    AuthMiddleware = require("../midleware/AuthMiddleware");
 
 router.post('/create', UserController.create);
+
+router.post('/info', AuthMiddleware, UserController.InfoController);
+router.get('/info', AuthMiddleware, UserController.InfoController);
+
 router.post('/login', UserController.login);
 
 //change password
 router.post('/forgotpassword', UserController.ForgotPasswordController);
-router.post('/resetpassword', UserController.ResetPasswordController);
+
+router.put('/resetpassword', UserController.ResetPasswordController);
 
 // //change avatar user 
 router.post('/addavatar', UserController.UploadController);
-router.get('/addavatar', UserController.UploadController);
 
 module.exports = router;

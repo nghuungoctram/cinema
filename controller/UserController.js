@@ -108,6 +108,29 @@ class UserController {
             });
         }
     }
+
+    static async InfoController(req, res, next) {
+        try {
+            // let data = await UserService.LoginService(req);
+            let data = await UserService.InfoService(req);
+            res.status(200).json({
+                status: "Ok from info usercontroller",
+                error: null,
+                data: {
+                    result: data
+                }
+            });
+        } catch (e) {
+            res.status(200).json({
+                status: " Fail from info usercontroller",
+                error: {
+                    code: 1000,
+                    message: " Server Error"
+                },
+                data: null
+            });
+        }
+    }
 }
 
 module.exports = UserController;

@@ -1,0 +1,1 @@
+CinemaId = { 'CinemaThuDucPhamVanDong','CinemaThuDucVoVanNgan'}

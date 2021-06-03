@@ -1,13 +1,13 @@
 'use strict'
 
-const CinemaService = require("../service/CinemaService")
+const MovieManageService = require("../service/MovieManageService");
 
-class CinemaController {
-    static async CinemaDetailsController(req, res, next) {
+class MovieManageController {
+    static async createMovieManageDetailsController(req, res, next) {
         try {
-            let data = await CinemaService.CinemaDetailsService(req);
+            let data = await MovieManageService.CreateMovieManageDetailsService(req);
             res.status(200).json({
-                status: " OK from cinema Details Controller",
+                status: "Success Ok from create manage movie controller",
                 error: null,
                 data: {
                     result: data
@@ -15,7 +15,7 @@ class CinemaController {
             });
         } catch (e) {
             res.status(200).json({
-                status: " Fail from cinema Details Controller",
+                status: "Fail from create manage movie controller",
                 error: {
                     code: 1000,
                     message: " Server Error"
@@ -25,11 +25,11 @@ class CinemaController {
         }
     }
 
-    static async CinemaInfoController(req, res, next) {
+    static async MovieManageDetailsController(req, res, next) {
         try {
-            let data = await CinemaService.CinemaInfoService(req);
+            let data = await MovieManageService.MovieManageDetailsService(req);
             res.status(200).json({
-                status: " OK from cinema Info Controller",
+                status: "Success Ok from manage movie controller",
                 error: null,
                 data: {
                     result: data
@@ -37,7 +37,7 @@ class CinemaController {
             });
         } catch (e) {
             res.status(200).json({
-                status: " Fail from cinema Info Controller",
+                status: "Fail from manage movie controller",
                 error: {
                     code: 1000,
                     message: " Server Error"
@@ -48,4 +48,4 @@ class CinemaController {
     }
 }
 
-module.exports = CinemaController;
+module.exports = MovieManageController;

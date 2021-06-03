@@ -5,8 +5,8 @@ const uuid = require('uuid');
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const JWT_SECRET_KEY = "BoxinhDep";
-const cloudBackend = require('appdrag-cloudbackend');
-let nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer'),
+    base64 = require('base-64');
 
 class UserService {
     static async CreateService(req, res) {
@@ -30,6 +30,31 @@ class UserService {
                     Password: bcryptjs.hashSync(param.Password, 10),
                     Email: param.Email
                 }
+
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'bonguyen1219@gmail.com', // mail của ai người đó sài
+                        pass: '195ngoctram1912.'
+                    }
+                });
+
+                let mailOptions = {
+                    from: 'bonguyen1219@gmail.com',
+                    to: Email,
+                    subject: '[ABC Cinema] You have already created new user',
+                    text: 'Your new user is: ' + Username
+                };
+
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Info Email sent:   ' + info.response);
+                    }
+                    return 'Info Email sent:   ' + info.response;
+                });
+
                 await queryBuilder('user').insert(dataInsert);
                 console.log("create new user successfull! ", dataInsert)
                 return "Create new user successfull ";
@@ -79,7 +104,7 @@ class UserService {
                     from: 'bonguyen1219@gmail.com',
                     to: Email,
                     subject: '[ABC Cinema] Please reset your password',
-                    text: 'ABC Cinema password reset'
+                    text: 'Hi, ABC Cinema password reset'
                 };
 
                 transporter.sendMail(mailOptions, function (error, info) {
@@ -106,16 +131,11 @@ class UserService {
                 Password = param.Password,
                 ChangePassword = param.ChangePassword,
                 passwordCheck = await queryBuilder('user').where('Password', Password).first();
-
             if (passwordCheck) {
-                if (ChangePassword.length >= 10 && ChangePassword.length <= 15) {
-                    await queryBuilder('user').where('Password', Password).update('Password', ChangePassword);
-                    console.log("Password has changed! =>>>", ChangePassword)
-                    return "Password has changed!";
-                } else {
-                    console.log('New password at least 10 characters and at most 15 characters');
-                    return 'New password at least 10 characters and at most 15 characters';
-                }
+                await queryBuilder('user').where('Password', Password).update('Password', ChangePassword);
+                console.log("Password has changed! =>>>", ChangePassword)
+                return "Password has changed!";
+
             } else {
                 console.log('Password doesnt match');
                 return 'Password doesnt match';
@@ -128,9 +148,9 @@ class UserService {
 
     static async UploadService(req, res) {
         try {
-            let param = req.body;
-            Email = param.Email;
-            emailCheck = await queryBuilder('user').where('Email', Email).first();
+            let param = req.body,
+                Email = param.Email,
+                emailCheck = await queryBuilder('user').where('Email', Email).first();
             if (!req.files) {
                 return res.status(400).send('No files were uploaded.');
             }
@@ -139,18 +159,39 @@ class UserService {
                     Imgname = file.name;
                 if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif") {
                     file.mv('public/images/upload_images/' + file.name, async function (err) {
-                        let dataInsert = {
-                            Imgname: Imgname
-                        }
+                        let ImgUrl = 'http://localhost:1000/images/upload_images/5492421.jpg' + Imgname,
+                            ImgBase64 = base64.encode(ImgUrl),
+                            dataInsert = {
+                                Imgname: ImgBase64
+                            }
                         await queryBuilder('user').where('Email', Email).update(dataInsert);
-
+                        // let ImgDe = base64.decode(ImgBase64);
+                        // console.log(ImgDe);
                         console.log("Upload ok from service! ", dataInsert);
                         return "Upload ok from service!", file;
                     });
-
                 } else {
                     return "This format is not allowed , please upload file with '.png','.gif','.jpg'";
                 }
+            }
+        } catch (e) {
+            console.log(e);
+            return e;
+        }
+    }
+
+    static async InfoService(req, res) {
+        try {
+            let param = req.body,
+                Password = param.Password,
+                Email = param.Email,
+                emailCheck = await queryBuilder('user').where('Email', Email).first(),
+                passwordCheck = await queryBuilder('user').where('Password', Password).first();
+            if (emailCheck && passwordCheck) {
+                let data = await queryBuilder('user').select();
+                return "pro 5", data;
+            } else {
+                return "fail";
             }
         } catch (e) {
             console.log(e);

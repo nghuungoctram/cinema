@@ -5,12 +5,12 @@ let app = express(),
     path = require('path'),
     db = require('./config/query');
 
-let filmRouter = require('./routes/film');
-let cinemaRouter = require('./routes/cinema');
-let userRouter = require('./routes/user');
-// let imgRouter = require('./routes/img');
+let movieRouter = require('./routes/movie'),
+    cinemaRouter = require('./routes/cinema'),
+    userRouter = require('./routes/user'),
+    movieManageRouter = require('./routes/moviemanage');
 
-// all evironemtn
+// all evironment
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('views', __dirname + '/views');
@@ -31,9 +31,10 @@ app.get('/', (req, res, next) => {
 // query connection
 db.query;
 
-app.use('/film', filmRouter);
+app.use('/movie', movieRouter);
 app.use('/cinema', cinemaRouter);
 app.use('/user', userRouter);
+app.use('/manage', movieManageRouter);
 
 app.use("*", (req, res, next) => {
     res.status(404).json({

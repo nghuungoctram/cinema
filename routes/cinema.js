@@ -3,6 +3,9 @@ const router = express.Router();
 const CinemaController = require("../controller/CinemaController");
 
 //postmethod
-router.get('/', CinemaController.list);
+router.post('/cinemadetails', CinemaController.CinemaDetailsController)
+
+router.get('/cinemainfo', CinemaController.CinemaInfoController)
+
 
 module.exports = router;

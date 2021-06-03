@@ -1,13 +1,13 @@
 'use strict'
 
-const CinemaService = require("../service/CinemaService")
+const MovieService = require("../service/MovieService");
 
-class CinemaController {
-    static async CinemaDetailsController(req, res, next) {
+class FilmController {
+    static async createMovieAdminController(req, res, next) {
         try {
-            let data = await CinemaService.CinemaDetailsService(req);
+            let data = await MovieService.createMovieAdminService(req);
             res.status(200).json({
-                status: " OK from cinema Details Controller",
+                status: "Success Ok from Create movie controller",
                 error: null,
                 data: {
                     result: data
@@ -15,7 +15,7 @@ class CinemaController {
             });
         } catch (e) {
             res.status(200).json({
-                status: " Fail from cinema Details Controller",
+                status: "Fail from Create movie controller",
                 error: {
                     code: 1000,
                     message: " Server Error"
@@ -25,11 +25,11 @@ class CinemaController {
         }
     }
 
-    static async CinemaInfoController(req, res, next) {
+    static async MovieAdminController(req, res, next) {
         try {
-            let data = await CinemaService.CinemaInfoService(req);
+            let data = await MovieService.MovieAdminService(req);
             res.status(200).json({
-                status: " OK from cinema Info Controller",
+                status: "Success Ok from movie controller",
                 error: null,
                 data: {
                     result: data
@@ -37,7 +37,7 @@ class CinemaController {
             });
         } catch (e) {
             res.status(200).json({
-                status: " Fail from cinema Info Controller",
+                status: "Fail from movie controller",
                 error: {
                     code: 1000,
                     message: " Server Error"
@@ -48,4 +48,4 @@ class CinemaController {
     }
 }
 
-module.exports = CinemaController;
+module.exports = FilmController;
